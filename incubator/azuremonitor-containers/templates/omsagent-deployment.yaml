@@ -31,25 +31,18 @@ spec:
   {{- end }}
    containers:
      - name: omsagent
-       {{- if  eq (.Values.omsagent.domain | lower) "opinsights.azure.cn" }}
-       image: "dockerhub.azk8s.cn/microsoft/oms:{{ .Values.omsagent.image.tag }}"
-       {{- else }}
-       image: "mcr.microsoft.com/azuremonitor/containerinsights/ciprod:{{ .Values.omsagent.image.tag }}"
-       {{- end }}
-       imagePullPolicy: IfNotPresent
+       image: "dockerhub.azk8s.com/microsoft/oms:{{ .Values.omsagent.image.tag }}"
+       imagePullPolicy: Always
        resources:
 {{ toYaml .Values.omsagent.resources.deployment | indent 9 }}
        env:
        {{- if ne .Values.omsagent.env.clusterId "<your_cluster_id>" }}
        - name: AKS_RESOURCE_ID
          value: {{ .Values.omsagent.env.clusterId | quote }}
+       {{- end }}
        {{- if ne .Values.omsagent.env.clusterRegion "<your_cluster_region>" }}
        - name: AKS_REGION
          value: {{ .Values.omsagent.env.clusterRegion | quote }}
-       {{- end }}
-       {{- else }}
-       - name: ACS_RESOURCE_NAME
-         value: {{ .Values.omsagent.env.clusterName | quote }}
        {{- end }}
        - name: CONTROLLER_TYPE
          value: "ReplicaSet"
