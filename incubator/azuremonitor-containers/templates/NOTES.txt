@@ -38,7 +38,7 @@ This deployment will not complete. To proceed, run
 Data should start flowing to the Log Analytics workspace shortly.
 Proceed to below link to view health and monitoring data of your clusters
 {{- if eq (.Values.omsagent.domain | lower)  "opinsights.azure.com" }}
-- Azure Public Cloud Portal URL : https://aka.ms/azmon-containers
+- Azure Public Cloud Portal URL : https://aka.ms/cialertsext
 {{- else if eq (.Values.omsagent.domain | lower)  "opinsights.azure.cn"  }}
 - Azure China Cloud Portal URL: https://aka.ms/azmon-containers-mooncake
 {{- else if eq (.Values.omsagent.domain | lower)  "opinsights.azure.us"  }}
