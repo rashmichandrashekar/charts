@@ -6,7 +6,7 @@
 ## ref: https://github.com/Microsoft/OMS-docker/tree/ci_feature_prod
 omsagent:
   image:
-    tag: "ci-mdm-alerts-preview"
+    tag: "microsoft/oms:ci-mdm-alerts-preview"
     pullPolicy: Always
     dockerProviderVersion: "9.0.0-2"
     agentVersion: "1.10.0.1"
