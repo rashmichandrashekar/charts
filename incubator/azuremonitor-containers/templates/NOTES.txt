@@ -14,7 +14,7 @@
 
 {{- end }}
 
-{{- if eq .Values.omsagent.env.clusterId "<your_cluster_id>") }}
+{{- if eq .Values.omsagent.env.clusterId "<your_cluster_id>" }}
 
 ##############################################################################
 ####   ERROR: You did not provide cluster id                            ####
