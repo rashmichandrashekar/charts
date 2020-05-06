@@ -31,7 +31,7 @@ spec:
   {{- end }}
    containers:
      - name: omsagent
-       image: "dockerhub.azk8s.com/microsoft/oms:{{ .Values.omsagent.image.tag }}"
+       image: "docker.io/microsoft/oms:{{ .Values.omsagent.image.tag }}"
        imagePullPolicy: Always
        resources:
 {{ toYaml .Values.omsagent.resources.deployment | indent 9 }}
