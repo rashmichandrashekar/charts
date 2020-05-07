@@ -22,13 +22,22 @@
 
 {{- end }}
 
-{{- if or (eq .Values.omsagent.secret.key "<your_workspace_key>") (eq .Values.omsagent.secret.wsid "<your_workspace_id>") (eq .Values.omsagent.env.clusterId "<your_cluster_id>")}}
+{{- if eq .Values.omsagent.env.msiClientId "<user_assigned_msi>" }}
+
+##############################################################################
+####   ERROR: You did not provide user assigned msi client id           ####
+##############################################################################
+
+{{- end }}
+
+{{- if or (eq .Values.omsagent.secret.key "<your_workspace_key>") (eq .Values.omsagent.secret.wsid "<your_workspace_id>") (eq .Values.omsagent.env.clusterId "<your_cluster_id>") (eq .Values.omsagent.env.msiClientId "<user_assigned_msi>")}}
 
 This deployment will not complete. To proceed, run
  helm upgrade {{ .Release.Name }} \
    --set omsagent.secret.wsid=<your_workspace_id> \
    --set omsagent.secret.key=<your_workspace_key> \
    --set omsagent.env.clusterId=<your_cluster_id> \
+   --set omsagent.env.msiClientId=<user_assigned_msi> \
    incubator/azuremonitor-containers
 
 {{- else -}}
