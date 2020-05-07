@@ -22,6 +22,7 @@ omsagent:
     ## Applicable for only managed clusters hosted in Azure
     clusterId: <your_cluster_id>
     clusterRegion: <your_cluster_region>
+    msiClientId: <user_assigned_msi>
   rbac: true
   logsettings:
     logflushintervalsecs: ""
